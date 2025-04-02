@@ -1,0 +1,132 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /inventaireDEproduits/updateOneProduit/{nom}:
+    put:
+      tags:
+      - inventaire-controller
+      operationId: updateOneProduit
+      parameters:
+      - name: nom
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Produit"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Produit"
+  /inventaireDEproduits/addProduit:
+    post:
+      tags:
+      - inventaire-controller
+      operationId: addProduit
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Produit"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /inventaireDEproduits/getStocksProduit:
+    get:
+      tags:
+      - inventaire-controller
+      operationId: verifierStocksBas
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /inventaireDEproduits/getOneProduit/{nom}:
+    get:
+      tags:
+      - inventaire-controller
+      operationId: getOneProduit
+      parameters:
+      - name: nom
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /inventaireDEproduits/getAllProduit:
+    get:
+      tags:
+      - inventaire-controller
+      operationId: getAllProduit
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Produit"
+  /inventaireDEproduits/deleteOneProduit/{nom}:
+    delete:
+      tags:
+      - inventaire-controller
+      operationId: deleteOneProduit
+      parameters:
+      - name: nom
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+components:
+  schemas:
+    Produit:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nom:
+          type: string
+        prix:
+          type: number
+          format: float
+        quantite:
+          type: integer
+          format: int64
