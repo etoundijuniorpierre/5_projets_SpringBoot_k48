@@ -1,0 +1,136 @@
+openapi: 3.1.0
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /blog/updateOneArticle/{id}:
+    put:
+      tags:
+      - blog-controller
+      operationId: updateArticle
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Article"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Article"
+  /blog/addComment:
+    post:
+      tags:
+      - blog-controller
+      operationId: addComment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Comment"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /blog/addArticle:
+    post:
+      tags:
+      - blog-controller
+      operationId: addArticle
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Article"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /blog/getAllArticles:
+    get:
+      tags:
+      - blog-controller
+      operationId: getAllArticle
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Article"
+  /blog/deleteOneArticle/{id}:
+    delete:
+      tags:
+      - blog-controller
+      operationId: deleteArticle
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Article"
+components:
+  schemas:
+    Article:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        content:
+          type: string
+        datePublication:
+          type: string
+          format: date-time
+        author:
+          type: string
+        comments:
+          type: array
+          items:
+            $ref: "#/components/schemas/Comment"
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        content:
+          type: string
+        datecomment:
+          type: string
+          format: date-time
+        article:
+          $ref: "#/components/schemas/Article"
