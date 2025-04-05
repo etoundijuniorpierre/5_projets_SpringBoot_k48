@@ -11,16 +11,20 @@ Prérequis :
    - Ouvrir le dossier du projet dans IntelliJ IDEA
    - Laisser l'IDE configurer les dépendances automatiquement
 
-2. Compilation et lancement :
+2. création de la base de donnée : 
+   - Créer une base PostgreSQL nommée blogDB via pgAdmin ou exporter la base de donnée fournie
+   - vous pouvez aussi aussi créer une base de donnée avec un autre nom suffira juste de modifier les informations de "application.properties" pour les adapter aux votres
+
+3. Compilation et lancement :
    - Compiler le projet 
    - Lancer l'application via la classe principale (annotée `@SpringBootApplication`)
 
-3. Accès à l'interface Swagger :
+4. Accès à l'interface Swagger :
    - Ouvrir un navigateur web
    - Accéder à : `http://localhost:8080/swagger-ui/index.html`
    - Vous devriez voir la documentation interactive de l'API
 
-4. Tester un endpoint (exemple POST) :
+5. Tester un endpoint (exemple POST) :
 CAS D'UN AJOUT D'ARTICLE
    a. Dans Swagger UI :
    - Trouver la section correspondant à votre contrôleur
