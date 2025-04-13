@@ -13,7 +13,7 @@ Prérequis :
    - Laisser l'IDE configurer les dépendances automatiquement
 
 2. création de la base de donnée : 
-   - Créer une base PostgreSQL nommée todoListeBD via pgAdmin ou exporter la base de donnée fournie
+   - Créer une base PostgreSQL nommée todoListeBD via pgAdmin ou exporter la base de donnée fournie (".backup" de préférence si pgAdmin utilisé)
    - vous pouvez aussi aussi créer une base de donnée avec un autre nom suffira juste de modifier les informations de "application.properties" pour les adapter aux votres
 
 3. Compilation et lancement :
