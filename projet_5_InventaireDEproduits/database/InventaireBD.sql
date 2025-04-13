@@ -1,4 +1,4 @@
-PGDMP               
+PGDMP  3             
         }            inventaireBD    17.2    17.2 
     ð           0    0    ENCODING    ENCODING        SET client_encoding = 'UTF8';
                            false            ñ           0    0 
