@@ -1,98 +1,40 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 17.2
--- Dumped by pg_dump version 17.1
-
--- Started on 2025-04-05 16:12:04
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET transaction_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
-SET default_tablespace = '';
-
-SET default_table_access_method = heap;
-
---
--- TOC entry 217 (class 1259 OID 57796)
--- Name: produit; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.produit (
+PGDMP               
+        }            inventaireBD    17.2    17.2 
+    ð           0    0    ENCODING    ENCODING        SET client_encoding = 'UTF8';
+                           false            ñ           0    0 
+   STDSTRINGS 
+   STDSTRINGS     (   SET standard_conforming_strings = 'on';
+                           false            ò           0    0 
+   SEARCHPATH 
+   SEARCHPATH     8   SELECT pg_catalog.set_config('search_path', '', false);
+                           false            ó           1262    66101    inventaireBD    DATABASE     ƒ   CREATE DATABASE "inventaireBD" WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'French_Cameroon.1252';
+    DROP DATABASE "inventaireBD";
+                     postgres    false            Ù            1259    66102     produit    TABLE     |   CREATE TABLE public.produit (
     id bigint NOT NULL,
     nom character varying(255),
     prix real,
     quantite bigint
 );
-
-
-ALTER TABLE public.produit OWNER TO postgres;
-
---
--- TOC entry 218 (class 1259 OID 57803)
--- Name: produit_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.produit_seq
+    DROP TABLE public.produit;
+       public         heap r       postgres    false            Ú            1259    66109 
+   produit_seq    SEQUENCE     u   CREATE SEQUENCE public.produit_seq
     START WITH 1
     INCREMENT BY 50
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
-ALTER SEQUENCE public.produit_seq OWNER TO postgres;
-
---
--- TOC entry 4844 (class 0 OID 57796)
--- Dependencies: 217
--- Data for Name: produit; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.produit (id, nom, prix, quantite) FROM stdin;
-\.
-
-
---
--- TOC entry 4851 (class 0 OID 0)
--- Dependencies: 218
--- Name: produit_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.produit_seq', 1, false);
-
-
---
--- TOC entry 4696 (class 2606 OID 57800)
--- Name: produit produit_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.produit
+ "   DROP SEQUENCE public.produit_seq;
+       public               postgres    false            ì          0    66102     produit 
+   TABLE DATA           :   COPY public.produit (id, nom, prix, quantite) FROM stdin;
+    public               postgres    false    217   É	       ô           0    0 
+   produit_seq    SEQUENCE SET     :   SELECT pg_catalog.setval('public.produit_seq', 51, true);
+          public               postgres    false    218            X           2606    66106    produit produit_pkey 
+   CONSTRAINT     R   ALTER TABLE ONLY public.produit
     ADD CONSTRAINT produit_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 4698 (class 2606 OID 57802)
--- Name: produit ukp3flguk26lkj16433geia6xx8; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.produit
+ >   ALTER TABLE ONLY public.produit DROP CONSTRAINT produit_pkey;
+       public                 postgres    false    217            Z           2606    66108 #   produit ukp3flguk26lkj16433geia6xx8 
+   CONSTRAINT     ]   ALTER TABLE ONLY public.produit
     ADD CONSTRAINT ukp3flguk26lkj16433geia6xx8 UNIQUE (nom);
-
-
--- Completed on 2025-04-05 16:12:04
-
---
--- PostgreSQL database dump complete
---
-
+ M   ALTER TABLE ONLY public.produit DROP CONSTRAINT ukp3flguk26lkj16433geia6xx8;
+       public                 postgres    false    217            ì   C   xœ3äLÎÈOÎÏI,á460à450à2â¬LÌ/-*q8
+ÆœY¥Å`ž‘kÂ™”™Z”ÊiˆÑãââ —$O     
