@@ -8,53 +8,132 @@ Prérequis :
 - base de donnée : Postgres(pgAdmin)
 
 Étapes pour lancer et tester l'API :
-1. Importation du projet :
-   - Ouvrir le dossier du projet dans IntelliJ IDEA
-   - Laisser l'IDE configurer les dépendances automatiquement
+ **1. Configuration Initiale**
 
-2. création de la base de donnée : 
-   - Créer une base PostgreSQL nommée todoListeBD via pgAdmin ou exporter la base de donnée fournie (".backup" de préférence si pgAdmin utilisé)
-   - vous pouvez aussi aussi créer une base de donnée avec un autre nom suffira juste de modifier les informations de "application.properties" pour les adapter aux votres
+ **1.1. Importation du Projet**
+1. Ouvrir le projet dans IntelliJ IDEA
+2. Laisser l'IDE :
+   - Configurer automatiquement les dépendances Maven
+   - Indexer les fichiers (peut prendre quelques minutes)
 
-3. Compilation et lancement :
-   - Compiler le projet 
-   - Lancer l'application via la classe principale (annotée `@SpringBootApplication`)
+ **1.2. Configuration de la Base de Données**
+**Option 1 (Recommandée)** :
+```sql
+CREATE DATABASE todoListeBD;
+-- Puis importer le fichier .backup fourni via pgAdmin
 
-4. Accès à l'interface Swagger :
-   - Ouvrir un navigateur web
-   - Accéder à : `http://localhost:8080/swagger-ui/index.html`
-   - Vous devriez voir la documentation interactive de l'API
 
-5. Tester un endpoint (exemple POST) :
-   a. Dans Swagger UI :
-   - Trouver la section correspondant à votre contrôleur
-   - Cliquer sur "POST" pour développer la section
-   - Cliquer sur "Try it out"
-   - Dans le corps de la requête :
-     * Remplacer le contenu exemple par vos données
-     * Supprimer l'id (généré automatiquement)
-     * Renseigner les champs obligatoires (titre, description, status)
-   - Cliquer sur "Execute"
-   - Vérifier la réponse "success" si tout s'est bien passé
+**Option 2 (Configuration manuelle)** :
+1. Créer une base PostgreSQL avec le nom de votre choix
+2. Modifier `src/main/resources/application.properties` :
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/votre_nom_de_base
+spring.datasource.username=postgres
+spring.datasource.password=votre_mdp
+spring.jpa.hibernate.ddl-auto=update
+```
 
-   b. Via Postman :
-   - Créer une nouvelle requête POST vers `http://localhost:8080/[votre-endpoint]`
-   - Dans l'onglet "Body", sélectionner "raw" et "JSON"
-   - Saisir votre objet JSON (sans l'id)
-   - Envoyer la requête et vérifier la réponse
 
-Conseils :
+ **2. Lancement de l'API**
+1. **Compiler** : `mvn clean install`
+2. **Lancer** :
+   - Via IDE : Exécuter la classe `@SpringBootApplication`
+   - Via terminal : `mvn spring-boot:run`
+
+
+ **3. Test via Swagger UI**
+
+ **3.1. Accès à l'interface**
+- URL : [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+- Vérifier que tous les endpoints sont visibles
+
+ **3.2. Création d'une tâche (POST)**
+1. Sélectionner le contrôleur `/todos`
+2. Développer `POST /todos`
+3. Cliquer sur **"Try it out"**
+4. Modifier le JSON :
+```json
+{
+  "titre": "Faire les courses",
+  "description": "Acheter du lait et des œufs",
+  "status": "EN_COURS"
+}
+```
+5. Cliquer sur **"Execute"**
+6. Vérifier :
+   - Code réponse : `201 Created`
+   - Corps de réponse : `"success"` avec les détails
+
+
+ **4. Test via Postman**
+
+ **4.1. Collection recommandée**
+1. Importer la collection Swagger :
+   - Fichier → Import → Link
+   - Coller : `http://localhost:8080/v3/api-docs`
+
+ **4.2. Création de tâche**
+1. **Méthode** : POST
+2. **URL** : `http://localhost:8080/todos`
+3. **Headers** :
+   - `Content-Type: application/json`
+4. **Body** (raw/JSON) :
+```json
+{
+  "titre": "Réunion client",
+  "description": "Préparer le dossier projet",
+  "status": "A_FAIRE"
+}
+```
+
+
+
+ **Conseils & Dépannage**
 - Vérifiez que le port 8080 est disponible
 - En cas d'erreur, consultez les logs de l'application
 - Pour Postman, vous pouvez importer la configuration Swagger si disponible
 
-Exemple de corps de requête JSON :
+
+
+ **Exemples de Requêtes**
+**Pour PATCH (mise à jour)** :
 ```json
 {
-  "titre": "Exemple de titre",
-  "description": "Description test",
-  "status": "ACTIF"
+  "status": "TERMINE"
 }
 ```
 
+**Réponse réussie** :
+```json
+{
+  "status": "success",
+  "data": {
+    "id": 1,
+    "titre": "Faire les courses",
+    "status": "TERMINE"
+  }
+}
+```
+
+**Structure complète d'une tâche** :
+```json
+{
+  "id": 1,
+  "titre": "String",
+  "description": "String",
+  "status": "A_FAIRE|EN_COURS|TERMINE",
+}
+```
+
+
+Cette version apporte :
+1. Une **structure visuelle claire** avec séparation des sections
+2. Des **exemples complets** pour chaque cas d'usage
+3. Un **tableau de dépannage** rapide
+4. La **documentation des modèles** de données
+5. Les **deux méthodes** (Swagger et Postman) bien distinguées
+
+La documentation des modèles de données
+
+Les deux méthodes (Swagger et Postman) bien distinguées
 
