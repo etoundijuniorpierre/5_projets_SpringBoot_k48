@@ -12,7 +12,7 @@ Prérequis :
    - Laisser l'IDE configurer les dépendances automatiquement
 
 2. création de la base de donnée : 
-   - Créer une base PostgreSQL nommée utilisateurBD via pgAdmin ou exporter la base de donnée fournie (".backup" de préférence si pgAdmin utilisé)
+   - Créer une base PostgreSQL nommée "userDataBase" via pgAdmin ensuite faite un backup de la base de donnée se touvant dans le dossier database (".backup" de préférence si pgAdmin utilisé)
    - vous pouvez aussi aussi créer une base de donnée avec un autre nom suffira juste de modifier les informations de "application.properties" pour les adapter aux votres
 
 3. Compilation et lancement :
@@ -25,20 +25,14 @@ Prérequis :
    - Vous devriez voir la documentation interactive de l'API
 
 5. Tester un endpoint (exemple DELETE) :
-   a. Dans Swagger UI :
-   - Trouver la section correspondant à votre contrôleur
-   - Cliquer sur "DELETE" pour développer la section
-   - Cliquer sur "Try it out"
-   - Dans le corps de la requête :
-     * indiquez le nom de l'utilisateur à supprimer (faudrait au préalable déjà avoir des données entrées)
-   - Cliquer sur "Execute"
-   - Vérifier la réponse 
-   {
-  "utilisateur : ": "utilisateurNom",
-  "message": "supprimé avec succès"
-    } si tout s'est bien passé
-
-   b. Via Postman :
+   a. Via Postman :
+   - premèrement se login avec son email et son password
+     exemple requête Json :
+           {
+           "password": "password",
+           "email": "email"
+            }
+   - récupérer le token fourni et l'insèrer dans l'onglet Auth -> Type -> Bearer Token  
    - Créer une nouvelle requête DELETE vers `http://localhost:8080/deleteOneUtilisateur/{nom}`
    - Envoyer la requête et vérifier la réponse
 
