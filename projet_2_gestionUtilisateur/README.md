@@ -19,12 +19,7 @@ Prérequis :
    - Compiler le projet 
    - Lancer l'application via la classe principale (annotée `@SpringBootApplication`)
 
-4. Accès à l'interface Swagger :
-   - Ouvrir un navigateur web
-   - Accéder à : `http://localhost:8080/swagger-ui/index.html`
-   - Vous devriez voir la documentation interactive de l'API
-
-5. Tester un endpoint (exemple DELETE) :
+4. Tester un endpoint (exemple DELETE) :
    a. Via Postman :
    - premèrement se login avec son email et son password
      exemple requête Json :
