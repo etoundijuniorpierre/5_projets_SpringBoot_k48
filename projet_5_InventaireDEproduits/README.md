@@ -11,8 +11,14 @@ Prérequis :
    - Laisser l'IDE configurer les dépendances automatiquement
 
 2. création de la base de donnée : 
-   - Créer une base PostgreSQL nommée "InventaireBD" via pgAdmin ou exporter la base de donnée fournie (".backup" de préférence si pgAdmin utilisé)
+   - Créer une base PostgreSQL nommée "InventaireBD" via pgAdmin et exporter la base de donnée fournie (".backup" de préférence si pgAdmin utilisé)
    - vous pouvez aussi aussi créer une base de donnée avec un autre nom suffira juste de modifier les informations de "application.properties" pour les adapter aux votres
+   Modifier `src/main/resources/application.properties` :  
+   ```properties
+   spring.datasource.url=jdbc:postgresql://localhost:5432/votre_nom_de_base
+   spring.datasource.username=votre_username
+   spring.datasource.password=votre_password
+   ```
 
 3. Compilation et lancement :
    - Compiler le projet 
