@@ -8,31 +8,25 @@ Prérequis :
 - base de donnée : Postgres(pgAdmin)
 
 Étapes pour lancer et tester l'API :
- **1. Configuration Initiale**
+ **1. Configuration Initiale**  
 
- **1.1. Importation du Projet**
-1. Ouvrir le projet dans IntelliJ IDEA
-2. Laisser l'IDE :
-   - Configurer automatiquement les dépendances Maven
-   - Indexer les fichiers (peut prendre quelques minutes)
+ **1.1. Importation du Projet**  
+- Ouvrir le projet dans IntelliJ IDEA  
+- Laisser l'IDE configurer automatiquement les dépendances Maven  
 
- **1.2. Configuration de la Base de Données**
-**Option 1 (Recommandée)** :
-```sql
-CREATE DATABASE todoListeBD;
--- Puis importer le fichier .backup fourni via pgAdmin
+ **1.2. Configuration de la Base de Données**  
+**Option 1 (Recommandée - Backup)** :  
+1. Créer une base PostgreSQL nommée `todoListeBD` via pgAdmin  
+2. Restaurer le fichier `.backup` situé dans `/database`  
 
-
-**Option 2 (Configuration manuelle)** :
-1. Créer une base PostgreSQL avec le nom de votre choix
-2. Modifier `src/main/resources/application.properties` :
-```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/votre_nom_de_base
-spring.datasource.username=postgres
-spring.datasource.password=votre_mdp
-spring.jpa.hibernate.ddl-auto=update
-```
-
+**Option 2 (Configuration Manuelle)** :  
+1. Créer une base PostgreSQL avec le nom de votre choix  
+2. Modifier `src/main/resources/application.properties` :  
+   ```properties
+   spring.datasource.url=jdbc:postgresql://localhost:5432/votre_nom_de_base
+   spring.datasource.username=votre_username
+   spring.datasource.password=votre_password
+   ```
 
  **2. Lancement de l'API**
 1. **Compiler** : `mvn clean install`
